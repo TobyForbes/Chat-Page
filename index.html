@@ -1,0 +1,118 @@
+﻿<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="shortcut icon" href="https://cdn4.iconfinder.com/data/icons/keynote-and-powerpoint-icons/256/Messages-512.png" />
+
+<!-- The page background image, hosted on my personal onedrive -->
+<body background="https://isot-my.sharepoint.com/personal/forbes_t19_intst_net/_layouts/15/guestaccess.aspx?docid=1be9abd8f2c2340e8a0de1eaaa48b9c37&authkey=AWxY7H_OCT9bY5CBFKSCvTU&e=1cf3a87689b4453f86218f578a6928d2" align="left">
+
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+
+<div id="parent">
+<div id="title"><h1>Chat page</h1></div> <!-- The title of the page, shown at the top of the page-->
+<!-- START: Online script to find the number of users on the page -->
+<div id="counter">
+	<center><script type="text/javascript" src="//widget.supercounters.com/ssl/online_i.js"></script><script type="text/javascript">sc_online_i(1463002,"000000","009999");</script><br><noscript><a href="http://www.supercounters.com/">Free Online Counter</a></noscript>
+<!-- END OF SCRIPT -->
+	</center>
+</div>
+
+<div id="end">
+<small>---> counter may take a while to update! :( </small> <!-- message next to live counter in small font-->
+</div>
+</div>
+
+
+
+<!-- Text for the instructions -->
+<div id="des"> <h4> <strong>How to use:</strong> the box on left side is for your name, the middle box is for your message, and the button on the right side is to send</h4> </div>
+
+	<head>
+		<body onLoad="scrollDiv_init()">
+		<title>Chat</title> <!-- The text on the tab in web browser -->
+
+<!-- START: CSS code -->
+		<style>
+
+	/* START: Alignment of Title, Counter and Instructions*/
+
+			#parent {width: 100%;}
+			#title {float:left; width: 40% ; height: 60px; border: 1px solid rgba(0,0,0,0);}
+			#counter {float:left; width: 15% ; padding-top: 20px ; height: 60px; border: 1px solid rgba(0,0,0,0); }
+			#end {float:left; width: 45% ; padding-top: 20px ; height: 60px; border: 1px solid rgba(0,0,0,0); }
+			#parent p {clear:both;}
+
+			#des {width: 100%; min-height: 40px; max-height: 200px; border: 1px solid rgba(0,0,0,0); padding-top: 20px; }
+
+	/* END */
+
+	/* START: bar containing name and message box and send button*/
+
+			* { margin: 0 padding: 0; box-sizing: border-box; }
+			body { font: 13px Helvetica, Arial; }
+			form { background: #00; padding: 10px; bottom: 0; width: 100%; position: relative; } /* Properties for the whole bar, relative positioning alows the bar to not cover up any messages*/
+			form .pseudo {border: 0; padding: 15px; width: 22%; margin-right: .5%; border-radius: 30px; background-color: rgb(211,211,211); }
+			form .message {border: 0; padding: 15px; width: 60%; margin-right: .5%; border-radius: 30px; border: 2px solid rgb(211,211,211) }
+			form button { width: 12%; background: rgb(0, 153, 153); border: none; padding: 15px; border-radius: 100px; background-image: url('https://www.shareicon.net/download/2016/11/14/851958_o-send.svg'); }
+			#messages { list-style-type: none; margin: 0; padding: 0; }
+			#messages li { padding: 5px 10px; }
+			#messages li:nth-child(odd) { background: #eee }
+
+	/* END */
+
+		</style>
+<!-- END -->
+
+	</head>
+
+	<script src="/socket.io/socet.io.js"></script>
+	<script>
+		var socket = io();
+	</script>
+
+<!-- START: JS script to build the message and  -->
+	<script src="/socket.io/socket.io.js"></script>
+		<script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+		<script>
+			$(function () {
+				var socket = io();
+				$('form').submit(function(){
+					socket.emit('chat message', {pseudo :$('#p').val(), message: $('#m').val()});
+					$('#m').val('');
+					return false;
+				});
+
+				var str = " ☛ " /* Used to add the joiner in the middle of the username and message as follows */
+
+				socket.on('chat message', function(msg){
+					$('#messages').append($('<li>').text(msg.pseudo + str + msg.message /* + "        sent on:     "   + new Date() */ /* <-- date/time code not yet perfected */)); 
+					/* Above: adds username and message together with joiner in the middle into a single string */
+				});
+			});
+		</script>
+
+<!-- START: details for the bar -->
+	<body>
+		<ul id="messages"></ul>
+		<form action="">
+			<input id="p" class="pseudo" autocomplete="off" />
+			<input id="m" class="message" autocomplete="off" />
+			<button><font size="2" color="white" >➣</font></button> <!-- Adds the arrow to the send button, simply copied and pasted a unicode symbol -->
+		</form>
+	</body>
+<!-- END-->
+
+<!-- START: an attempt to have the page always scroll down with the chat-->
+<script language="JavaScript1.2">
+
+function scrollwindow(){
+	if (document.all)
+	temp=document.body.scrollTop
+}
+
+</script>
+<!-- END -->
+
+</html>
