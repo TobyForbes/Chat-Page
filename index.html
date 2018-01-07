@@ -2,7 +2,7 @@
 <html>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link rel="shortcut icon" href="https://cdn4.iconfinder.com/data/icons/keynote-and-powerpoint-icons/256/Messages-512.png" />
+<link rel="shortcut icon" href="https://cdn4.iconfinder.com/data/icons/keynote-and-powerpoint-icons/256/Messages-512.png" /> <!-- Code to put a custom image on the tab in a web browser -->
 
 <!-- The page background image, hosted on my personal onedrive -->
 <body background="https://isot-my.sharepoint.com/personal/forbes_t19_intst_net/_layouts/15/guestaccess.aspx?docid=1be9abd8f2c2340e8a0de1eaaa48b9c37&authkey=AWxY7H_OCT9bY5CBFKSCvTU&e=1cf3a87689b4453f86218f578a6928d2" align="left">
@@ -12,10 +12,12 @@
 
 <div id="parent">
 <div id="title"><h1>Chat page</h1></div> <!-- The title of the page, shown at the top of the page-->
+
 <!-- START: Online script to find the number of users on the page -->
 <div id="counter">
 	<center><script type="text/javascript" src="//widget.supercounters.com/ssl/online_i.js"></script><script type="text/javascript">sc_online_i(1463002,"000000","009999");</script><br><noscript><a href="http://www.supercounters.com/">Free Online Counter</a></noscript>
 <!-- END OF SCRIPT -->
+
 	</center>
 </div>
 
@@ -53,9 +55,9 @@
 			* { margin: 0 padding: 0; box-sizing: border-box; }
 			body { font: 13px Helvetica, Arial; }
 			form { background: #00; padding: 10px; bottom: 0; width: 100%; position: relative; } /* Properties for the whole bar, relative positioning alows the bar to not cover up any messages*/
-			form .pseudo {border: 0; padding: 15px; width: 22%; margin-right: .5%; border-radius: 30px; background-color: rgb(211,211,211); }
-			form .message {border: 0; padding: 15px; width: 60%; margin-right: .5%; border-radius: 30px; border: 2px solid rgb(211,211,211) }
-			form button { width: 12%; background: rgb(0, 153, 153); border: none; padding: 15px; border-radius: 100px; background-image: url('https://www.shareicon.net/download/2016/11/14/851958_o-send.svg'); }
+			form .pseudo {border: 0; padding: 15px; width: 22%; margin-right: .5%; border-radius: 30px; background-color: rgb(211,211,211); } /* Code responsible for the properties of the username box */
+			form .message {border: 0; padding: 15px; width: 60%; margin-right: .5%; border-radius: 30px; border: 2px solid rgb(211,211,211) } /* Code responsible for the properties of the message box */
+			form button { width: 12%; background: rgb(0, 153, 153); border: none; padding: 15px; border-radius: 100px; } /*Code responsible for the perperties of the send button */
 			#messages { list-style-type: none; margin: 0; padding: 0; }
 			#messages li { padding: 5px 10px; }
 			#messages li:nth-child(odd) { background: #eee }
